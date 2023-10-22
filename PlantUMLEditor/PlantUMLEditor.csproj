@@ -46,6 +46,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="AdvancedOptions.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="Document.cs" />
     <Compile Include="Browser.cs" />

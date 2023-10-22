@@ -16,7 +16,7 @@ namespace PlantUMLEditor
         private static readonly Debouncer debouncer = new Debouncer();
 
         public FrameworkElement VisualElement => this;
-        public double MarginSize => 800;
+        public double MarginSize => AdvancedOptions.Instance.PreviewWindowWidth;
         public bool Enabled => true;
         public Browser Browser { get; private set; }
 
@@ -127,11 +127,11 @@ namespace PlantUMLEditor
 
         private void SplitterDragCompleted(object sender, DragCompletedEventArgs e)
         {
-            //if (!double.IsNaN(Browser._browser.ActualWidth))
-            //{
-            //    AdvancedOptions.Instance.PreviewWindowWidth = (int)Browser._browser.ActualWidth;
-            //    AdvancedOptions.Instance.Save();
-            //}
+            if (!double.IsNaN(Browser.WebView2.ActualWidth))
+            {
+                AdvancedOptions.Instance.PreviewWindowWidth = (int)Browser.WebView2.ActualWidth;
+                AdvancedOptions.Instance.Save();
+            }
         }
 
         public void Dispose()

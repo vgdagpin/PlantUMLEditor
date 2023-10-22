@@ -11,7 +11,7 @@ namespace PlantUMLEditor
         public const string Name = "PlantUML Editor";
         public const string Description = @"PlantUML Editor";
         public const string Language = "en-US";
-        public const string Version = "1.1.128";
+        public const string Version = "1.1.129";
         public const string Author = "Vincent Dagpin";
         public const string Tags = "PlantUML";
     }

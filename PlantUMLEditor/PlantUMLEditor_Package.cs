@@ -39,6 +39,7 @@ namespace PlantUMLEditor
     [Guid(Constants.PackageUID)]
 
     [ProvideLanguageService(typeof(PlantUMLLanguage), Constants.LanguageName, 0, ShowHotURLs = false, DefaultToNonHotURLs = true, EnableLineNumbers = true, EnableAsyncCompletion = true, ShowCompletion = true, ShowDropDownOptions = true)]
+    [ProvideLanguageEditorOptionPage(typeof(OptionsProvider.AdvancedOptions), Constants.LanguageName, "", "Advanced", null, new[] { "puml" })]
     [ProvideLanguageExtension(typeof(PlantUMLLanguage), Constants.FileExtension)]
 
     [ProvideEditorFactory(typeof(PlantUMLLanguage), 0, false, CommonPhysicalViewAttributes = (int)__VSPHYSICALVIEWATTRIBUTES.PVA_SupportsPreview, TrustLevel = __VSEDITORTRUSTLEVEL.ETL_AlwaysTrusted)]

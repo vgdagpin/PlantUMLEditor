@@ -1,7 +1,5 @@
 ﻿using PlantUml.Net;
 
-using System.IO;
-using System.Reflection;
 using System.Text;
 
 namespace PlantUMLEditor
@@ -16,14 +14,11 @@ namespace PlantUMLEditor
             {
                 if (plantUmlRenderer == null)
                 {
-                    var factory = new RendererFactory();
-                    var vsixPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-                    var plantUml = Path.Combine(vsixPath, "PlantUML", "plantuml.jar");
-
-                    plantUmlRenderer = factory.CreateRenderer(new PlantUmlSettings
-                    {
-                        JavaPath = plantUml
-                    });
+                    plantUmlRenderer = new RendererFactory()
+                        .CreateRenderer(new PlantUmlSettings
+                        {
+                            JavaPath = AdvancedOptions.Instance.Path
+                        });
                 }
 
                 return plantUmlRenderer;
@@ -54,7 +49,7 @@ namespace PlantUMLEditor
                     if (!string.IsNullOrWhiteSpace(text))
                     {
                         var bytes = await PlantUmlRenderer.RenderAsync(text, OutputFormat.Svg);
-                        ParsedPlantUML = ASCIIEncoding.UTF8.GetString(bytes);
+                        ParsedPlantUML = Encoding.UTF8.GetString(bytes);
                     }
                     else
                     {
