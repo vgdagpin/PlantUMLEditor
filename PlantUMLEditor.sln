@@ -11,6 +11,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlantUMLEditor.Tests", "PlantUMLEditor.Tests\PlantUMLEditor.Tests.csproj", "{9B7A7A65-7230-4B20-905C-AC4E7A87D18C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,18 @@ Global
 		{1148FBE1-7D1B-4232-8282-C974DDD64DA0}.Release|arm64.Build.0 = Release|arm64
 		{1148FBE1-7D1B-4232-8282-C974DDD64DA0}.Release|x86.ActiveCfg = Release|x86
 		{1148FBE1-7D1B-4232-8282-C974DDD64DA0}.Release|x86.Build.0 = Release|x86
+		{9B7A7A65-7230-4B20-905C-AC4E7A87D18C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B7A7A65-7230-4B20-905C-AC4E7A87D18C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B7A7A65-7230-4B20-905C-AC4E7A87D18C}.Debug|arm64.ActiveCfg = Debug|Any CPU
+		{9B7A7A65-7230-4B20-905C-AC4E7A87D18C}.Debug|arm64.Build.0 = Debug|Any CPU
+		{9B7A7A65-7230-4B20-905C-AC4E7A87D18C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{9B7A7A65-7230-4B20-905C-AC4E7A87D18C}.Debug|x86.Build.0 = Debug|Any CPU
+		{9B7A7A65-7230-4B20-905C-AC4E7A87D18C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B7A7A65-7230-4B20-905C-AC4E7A87D18C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B7A7A65-7230-4B20-905C-AC4E7A87D18C}.Release|arm64.ActiveCfg = Release|Any CPU
+		{9B7A7A65-7230-4B20-905C-AC4E7A87D18C}.Release|arm64.Build.0 = Release|Any CPU
+		{9B7A7A65-7230-4B20-905C-AC4E7A87D18C}.Release|x86.ActiveCfg = Release|Any CPU
+		{9B7A7A65-7230-4B20-905C-AC4E7A87D18C}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

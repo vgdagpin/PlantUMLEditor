@@ -105,7 +105,7 @@ namespace PlantUMLEditor
             {
                 await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
 
-                var html = document.ParsedPlantUML;
+                var html = document.ParsedResult;
 
                 if (await IsHtmlTemplateLoadedAsync())
                 {

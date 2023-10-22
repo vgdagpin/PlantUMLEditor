@@ -3,7 +3,7 @@
 internal class Constants
 {
     public const string LanguageName = "PlantUML";
-    public const string FileExtension = ".puml";
+    public const string FileExtension = ".mdpuml";
     public static bool IsTest = false;
     public const string MarketplaceId = "VincentDagpin.PlantUMLEditor";
 
