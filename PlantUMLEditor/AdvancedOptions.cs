@@ -28,8 +28,8 @@ public class AdvancedOptions : BaseOptionModel<AdvancedOptions>, IRatingConfig
     public RenderType RenderType { get; set; } = RenderType.Local;
 
     [Category("Preview Window")]
-    [DisplayName("Path (local or remote)")]
-    [Description("Path to .jar if local, url if remote (POST)")]
+    [DisplayName(".Jar Path")]
+    [Description("Path to .jar if local")]
     public string Path
     {
         get
@@ -47,6 +47,12 @@ public class AdvancedOptions : BaseOptionModel<AdvancedOptions>, IRatingConfig
             path = value;
         }
     }
+
+    [Category("Preview Window")]
+    [DisplayName("Remote Url")]
+    [Description("Remote Url (or create your own container app: https://hub.docker.com/r/vgdagpin/plantumlserver)")]
+    [DefaultValue("https://puml-server-ca.wittygrass-142105d5.southeastasia.azurecontainerapps.io/")]
+    public string RemoteUrl { get; set; } = "https://puml-server-ca.wittygrass-142105d5.southeastasia.azurecontainerapps.io/";
 
     [Category("Preview Window")]
     [DisplayName("Preview window width")]

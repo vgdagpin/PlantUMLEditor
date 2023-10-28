@@ -8,6 +8,7 @@ using PlantUml.Net;
 
 using System.Collections.Generic;
 using System.IO;
+using System.Net.Http;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -20,6 +21,9 @@ public class Document : IDisposable
 
     [ThreadStatic]
     private static StringWriter htmlWriterStatic;
+
+    [ThreadStatic]
+    private static HttpClient httpClient;
 
     protected virtual IPlantUmlRenderer PlantUmlRenderer
     {
@@ -147,9 +151,39 @@ public class Document : IDisposable
 
     protected virtual async Task<string> RenderPlantUMLAsync(string data)
     {
-        var bytes = await PlantUmlRenderer.RenderAsync(data, OutputFormat.Svg);
+        string result;
 
-        return Encoding.UTF8.GetString(bytes);
+        if (AdvancedOptions.Instance.RenderType == RenderType.Local)
+        {
+            var bytes = await PlantUmlRenderer.RenderAsync(data, OutputFormat.Svg);
+
+            result = Encoding.UTF8.GetString(bytes);
+        }
+        else
+        {
+            httpClient = (httpClient ??= new HttpClient()
+            {
+                BaseAddress = new Uri(AdvancedOptions.Instance.RemoteUrl)
+            });
+
+            var request = new HttpRequestMessage(HttpMethod.Post, "RenderFromPlain")
+            {
+                Content = new StringContent(data, Encoding.UTF8, "text/plain")
+            };
+
+            var response = await httpClient.SendAsync(request);
+
+            if (response.IsSuccessStatusCode)
+            {
+                result = await response.Content.ReadAsStringAsync();
+            }
+            else
+            {
+                result = "Error";
+            }
+        }
+
+        return result;
     }
 
     protected virtual (string PlaceHolder, Dictionary<string, string> Nodes) ReplaceUmlWithPlaceholder(string data)
