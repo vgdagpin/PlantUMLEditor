@@ -19,10 +19,6 @@ namespace PlantUMLEditor.Tests
             var testData = Path.Combine(testPath, "TestData", "Test1.input.txt");
             var testOutput = Path.Combine(testPath, "TestData", "Test1.output.txt");
 
-
-            var testOutput1 = Path.Combine(testPath, "TestData", "Test2.output.txt");
-            var testOutput2 = Path.Combine(testPath, "TestData", "Test3.output.txt");
-
             var str = File.ReadAllText(testData);
 
             var doc = new TestDocument();
@@ -33,9 +29,6 @@ namespace PlantUMLEditor.Tests
 
             var expected = File.ReadAllText(testOutput).Trim();
             var result = doc.ParsedResult.Trim();
-
-            File.WriteAllText(testOutput1, expected);
-            File.WriteAllText(testOutput2, result);
 
             Assert.AreEqual(expected, result);
         }
