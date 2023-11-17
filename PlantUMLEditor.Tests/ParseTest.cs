@@ -19,6 +19,10 @@ namespace PlantUMLEditor.Tests
             var testData = Path.Combine(testPath, "TestData", "Test1.input.txt");
             var testOutput = Path.Combine(testPath, "TestData", "Test1.output.txt");
 
+
+            var testOutput1 = Path.Combine(testPath, "TestData", "Test2.output.txt");
+            var testOutput2 = Path.Combine(testPath, "TestData", "Test3.output.txt");
+
             var str = File.ReadAllText(testData);
 
             var doc = new TestDocument();
@@ -27,25 +31,20 @@ namespace PlantUMLEditor.Tests
 
             await doc.ParseAsync();
 
-            Assert.AreEqual(File.ReadAllText(testOutput), doc.ParsedResult);
+            var expected = File.ReadAllText(testOutput).Trim();
+            var result = doc.ParsedResult.Trim();
+
+            File.WriteAllText(testOutput1, expected);
+            File.WriteAllText(testOutput2, result);
+
+            Assert.AreEqual(expected, result);
         }
 
         public class TestDocument : Document
         {
-            protected override async Task<string> RenderPlantUMLAsync(string data)
+            protected override Task<string> RenderPlantUMLAsync(string data)
             {
-                var testPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-                var plantUml = Path.Combine(testPath, "PlantUML", "plantuml.jar");
-
-                var plantUmlRenderer = new RendererFactory()
-                        .CreateRenderer(new PlantUmlSettings
-                        {
-                            JavaPath = plantUml
-                        });
-
-                var bytes = await plantUmlRenderer.RenderAsync(data, OutputFormat.Svg);
-
-                return Encoding.UTF8.GetString(bytes);
+                return Task.FromResult(data);
             }
         }
     }

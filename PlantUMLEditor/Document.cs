@@ -75,10 +75,17 @@ public class Document : IDisposable
             {
                 if (!string.IsNullOrWhiteSpace(text))
                 {
-                    var temp = ReplaceUmlWithPlaceholder(text);
-                    var md = await RenderMarkdownAsync(temp.PlaceHolder);
+                    var nodes = new Dictionary<string, string>();
 
-                    foreach (var pumlNode in temp.Nodes)
+                    text = ReplaceUmlWithPlaceholder("@startuml", "@enduml", text, ref nodes);
+                    text = ReplaceUmlWithPlaceholder("@startmindmap", "@endmindmap", text, ref nodes);
+                    text = ReplaceUmlWithPlaceholder("@startgantt", "@endgantt", text, ref nodes);
+                    text = ReplaceUmlWithPlaceholder("@startwbs", "@endwbs", text, ref nodes);
+                    text = ReplaceUmlWithPlaceholder("@startjson", "@endjson", text, ref nodes);
+
+                    var md = await RenderMarkdownAsync(text);
+
+                    foreach (var pumlNode in nodes)
                     {
                         var data = await RenderPlantUMLAsync(pumlNode.Value);
 
@@ -186,38 +193,41 @@ public class Document : IDisposable
         return result;
     }
 
-    protected virtual (string PlaceHolder, Dictionary<string, string> Nodes) ReplaceUmlWithPlaceholder(string data)
+    protected virtual string ReplaceUmlWithPlaceholder(string startTag, string endTag, string data, ref Dictionary<string, string> nodes)
     {
         var sb = new StringBuilder();
-        var dd = new Dictionary<string, string>();
-
-        var regex = new Regex("(@startuml.*?@enduml)", RegexOptions.Singleline);
-
-        var groups = regex.Matches(data);
 
         var start = 0;
-        foreach (Match group in groups)
+        var umlNodeFound = false;
+
+        foreach (Match group in new Regex($"({startTag}.*?{endTag})", RegexOptions.Singleline).Matches(data))
         {
-            var umlNode = ParseUmlNode(group.Value);
+            var umlNode = ParseUmlNode(startTag, group.Value);
 
             sb.Append(data.Substring(start, group.Index - start));
             sb.Append($"<!--- PlantUML:{umlNode.Key} -->");
 
             start = group.Index + group.Length;
 
-            dd.Add(umlNode.Key, umlNode.Value);
+            nodes.Add(umlNode.Key, umlNode.Value);
+            umlNodeFound = true;
+        }
+
+        if (!umlNodeFound)
+        {
+            return data;
         }
 
         sb.Append(data.Substring(start));
 
-        return (sb.ToString(), dd);
+        return sb.ToString();
     }
 
-    protected virtual KeyValuePair<string, string> ParseUmlNode(string data)
+    protected virtual KeyValuePair<string, string> ParseUmlNode(string startTag, string data)
     {
         var index = data.IndexOf(Environment.NewLine);
         var firstLine = index == -1 ? data : data.Substring(0, index);
-        var name = firstLine.Replace("@startuml", "").Trim() + Guid.NewGuid().ToString().Substring(0, 8);
+        var name = firstLine.Replace(startTag, "").Trim() + Guid.NewGuid().ToString().Substring(0, 8);
 
         return new KeyValuePair<string, string>(name, data);
     }

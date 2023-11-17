@@ -23,13 +23,13 @@ public class AdvancedOptions : BaseOptionModel<AdvancedOptions>, IRatingConfig
     [Category("Preview Window")]
     [DisplayName("Render Type")]
     [Description("Determines if PUML will render locally or thru remote. Requires re-opening document to take effect.")]
-    [DefaultValue(RenderType.Local)]
+    [DefaultValue(RenderType.Remote)]
     [TypeConverter(typeof(EnumConverter))]
-    public RenderType RenderType { get; set; } = RenderType.Local;
+    public RenderType RenderType { get; set; } = RenderType.Remote;
 
     [Category("Preview Window")]
     [DisplayName(".Jar Path")]
-    [Description("Path to .jar if local")]
+    [Description("Path to .jar if local, download the latest from here: https://plantuml.com/download")]
     public string Path
     {
         get

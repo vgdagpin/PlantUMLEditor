@@ -1,10 +1,22 @@
 <p id="pragma-line-0">Test 1234</p>
 <p id="pragma-line-2"><strong>yeah</strong></p>
-<?xml version="1.0" encoding="us-ascii" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="165px" preserveAspectRatio="none" style="width:58px;height:165px;background:#FFFFFF;" version="1.1" viewBox="0 0 58 165" width="58px" zoomAndPan="magnify"><defs/><g><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="23" x2="23" y1="67.2969" y2="87.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="30" x="5" y="63.9951">Db1</text><path d="M5,15 C5,5 23,5 23,5 C23,5 41,5 41,15 L41,41 C41,51 23,51 23,51 C23,51 5,51 5,41 L5,15 " fill="#E2E2F0" style="stroke:#181818;stroke-width:1.5;"/><path d="M5,15 C5,25 23,25 23,25 C23,25 41,25 41,15 " fill="none" style="stroke:#181818;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="30" x="5" y="99.292">Db1</text><path d="M5,112.5938 C5,102.5938 23,102.5938 23,102.5938 C23,102.5938 41,102.5938 41,112.5938 L41,138.5938 C41,148.5938 23,148.5938 23,148.5938 C23,148.5938 5,148.5938 5,138.5938 L5,112.5938 " fill="#E2E2F0" style="stroke:#181818;stroke-width:1.5;"/><path d="M5,112.5938 C5,122.5938 23,122.5938 23,122.5938 C23,122.5938 41,122.5938 41,112.5938 " fill="none" style="stroke:#181818;stroke-width:1.5;"/><!--SRC=[IqaiIKnAB4vL00AN94C0]--></g></svg>
+@startuml Uml_1  
+database    Db1
+@enduml
 <p id="pragma-line-6">The quick brown fox</p>
 <pre><code id="pragma-line-8">jumps
 </code></pre>
-<?xml version="1.0" encoding="us-ascii" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="165px" preserveAspectRatio="none" style="width:58px;height:165px;background:#FFFFFF;" version="1.1" viewBox="0 0 58 165" width="58px" zoomAndPan="magnify"><defs/><g><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="23" x2="23" y1="67.2969" y2="87.2969"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="29" x="5.5" y="63.9951">Db2</text><path d="M5,15 C5,5 23,5 23,5 C23,5 41,5 41,15 L41,41 C41,51 23,51 23,51 C23,51 5,51 5,41 L5,15 " fill="#E2E2F0" style="stroke:#181818;stroke-width:1.5;"/><path d="M5,15 C5,25 23,25 23,25 C23,25 41,25 41,15 " fill="none" style="stroke:#181818;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="29" x="5.5" y="99.292">Db2</text><path d="M5,112.5938 C5,102.5938 23,102.5938 23,102.5938 C23,102.5938 41,102.5938 41,112.5938 L41,138.5938 C41,148.5938 23,148.5938 23,148.5938 C23,148.5938 5,148.5938 5,138.5938 L5,112.5938 " fill="#E2E2F0" style="stroke:#181818;stroke-width:1.5;"/><path d="M5,112.5938 C5,122.5938 23,122.5938 23,122.5938 C23,122.5938 41,122.5938 41,112.5938 " fill="none" style="stroke:#181818;stroke-width:1.5;"/><!--SRC=[IqaiIKnAB4vL00AN92C0]--></g></svg>
+@startuml Uml_2
+database    Db2
+@enduml
 <h2 id="over"><a id="pragma-line-13"></a>over</h2>
-<p id="pragma-line-15">--
+@startmindmap
+* Debian
+** Ubuntu
+*** Linux Mint
+** LMDE
+** Raspbian with a very long name
+*** <s>Raspmbc</s> => OSMC
+@endmindmap
+<p id="pragma-line-17">--
 the lazy</p>

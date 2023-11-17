@@ -17,5 +17,14 @@ database    Db2
    over 
 ---
 
+@startmindmap
+* Debian
+** Ubuntu
+*** Linux Mint
+** LMDE
+** Raspbian with a very long name
+*** <s>Raspmbc</s> => OSMC
+@endmindmap
+
 --
 the lazy

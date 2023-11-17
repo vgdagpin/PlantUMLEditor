@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="PlantUML Viewer.552842d3-53f3-4aec-b8c1-7731c4e405a6" Version="1.1.131" Language="en-US" Publisher="Vincent Dagpin" />
+        <Identity Id="PlantUML Viewer.552842d3-53f3-4aec-b8c1-7731c4e405a6" Version="1.1.133" Language="en-US" Publisher="Vincent Dagpin" />
         <DisplayName>PlantUML Editor</DisplayName>
         <Description xml:space="preserve">PlantUML Editor</Description>
         <Tags>PlantUML</Tags>
