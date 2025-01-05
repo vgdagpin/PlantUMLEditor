@@ -43,10 +43,14 @@ jobs:
          name: vsix
          path: vsix
 
-     - name: Deploy to Visual Studio Marketplace
-       env:
-         VSS_EXTENSION_ID: ${{ secrets.VSS_EXTENSION_ID }}
-         VSS_PUBLISHER_ID: ${{ secrets.VSS_PUBLISHER_ID }}
-         VSS_ACCESS_TOKEN: ${{ secrets.VSS_ACCESS_TOKEN }}
-       run: |
-         vsce publish --packagePath vsix/*.vsix --pat $VSS_ACCESS_TOKEN
+     # - name: Deploy to Visual Studio Marketplace
+     #   env:
+     #     VSS_EXTENSION_ID: ${{ secrets.VSS_EXTENSION_ID }}
+     #     VSS_PUBLISHER_ID: ${{ secrets.VSS_PUBLISHER_ID }}
+     #     VSS_ACCESS_TOKEN: ${{ secrets.VSS_ACCESS_TOKEN }}
+     #   # https://learn.microsoft.com/en-us/visualstudio/extensibility/walkthrough-publishing-a-visual-studio-extension-via-command-line?view=vs-2022
+     #   run: |
+     #    $VsixPublisher = "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VSSDK\VisualStudioIntegration\Tools\Bin\VsixPublisher.exe"
+     #    & $VsixPublisher login -personalAccessToken $env:VSS_ACCESS_TOKEN -publisherName $env:VSS_PUBLISHER_ID
+     #    & $VsixPublisher publish -payload vsix/PlantUMLEditor/bin/Release/PlantUMLEditor.vsix -publishManifest publish-manifest.json
+     #   shell: pwsh
