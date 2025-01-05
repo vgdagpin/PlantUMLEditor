@@ -1,0 +1,56 @@
+name: Build and Deploy VSIX
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: '4.8.x'
+
+    - name: Install NuGet
+      run: nuget restore
+
+    - name: Build solution
+      run: msbuild /t:Restore,Build /p:Configuration=Release
+
+    - name: Package VSIX
+      run: msbuild /t:Pack /p:Configuration=Release /p:DeployExtension=false
+
+    - name: Upload VSIX artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: vsix
+        path: |
+          **/*.vsix
+
+  deploy:
+    needs: build
+    runs-on: windows-latest
+    steps:
+    - name: Download VSIX artifact
+      uses: actions/download-artifact@v2
+      with:
+        name: vsix
+        path: vsix
+
+    - name: Deploy to Visual Studio Marketplace
+      env:
+        VSS_EXTENSION_ID: ${{ secrets.VSS_EXTENSION_ID }}
+        VSS_PUBLISHER_ID: ${{ secrets.VSS_PUBLISHER_ID }}
+        VSS_ACCESS_TOKEN: ${{ secrets.VSS_ACCESS_TOKEN }}
+      run: |
+        vsce publish --packagePath vsix/*.vsix --pat $VSS_ACCESS_TOKEN
