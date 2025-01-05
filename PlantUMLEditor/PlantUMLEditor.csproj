@@ -64,6 +64,7 @@
     <Compile Include="Editor\PlantUMLEditor.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="publish-manifest.json" />
     <None Include="source.extension.vsixmanifest">
       <SubType>Designer</SubType>
       <Generator>VsixManifestGenerator</Generator>
