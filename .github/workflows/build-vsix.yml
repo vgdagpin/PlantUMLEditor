@@ -23,6 +23,11 @@ jobs:
       run: nuget restore
 
     - name: Build solution
-      run: msbuild /t:Restore,Build,Deploy /p:Configuration=Release
+      run: msbuild /t:Restore,Build /p:Configuration=Release
 
-   
+    - name: Upload VSIX artifact
+      uses: actions/upload-artifact@v4.5.0
+      with:
+        name: vsix
+        path: |
+          **/*.vsix
