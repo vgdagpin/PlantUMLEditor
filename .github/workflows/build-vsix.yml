@@ -31,3 +31,22 @@ jobs:
         name: vsix
         path: |
           **/*.vsix
+
+  deploy:
+     needs: build
+     runs-on: windows-latest
+
+     steps:
+     - name: Download VSIX artifact
+       uses: actions/download-artifact@v4.1.8
+       with:
+         name: vsix
+         path: vsix
+
+     - name: Deploy to Visual Studio Marketplace
+       env:
+         VSS_EXTENSION_ID: ${{ secrets.VSS_EXTENSION_ID }}
+         VSS_PUBLISHER_ID: ${{ secrets.VSS_PUBLISHER_ID }}
+         VSS_ACCESS_TOKEN: ${{ secrets.VSS_ACCESS_TOKEN }}
+       run: |
+         vsce publish --packagePath vsix/*.vsix --pat $VSS_ACCESS_TOKEN
