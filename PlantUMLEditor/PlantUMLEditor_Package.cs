@@ -40,10 +40,12 @@ namespace PlantUMLEditor
 
     [ProvideLanguageService(typeof(PlantUMLLanguage), Constants.LanguageName, 0, ShowHotURLs = false, DefaultToNonHotURLs = true, EnableLineNumbers = true, EnableAsyncCompletion = true, ShowCompletion = true, ShowDropDownOptions = true)]
     [ProvideLanguageEditorOptionPage(typeof(OptionsProvider.AdvancedOptions), Constants.LanguageName, "", "Advanced", null, new[] { "puml" })]
+    [ProvideLanguageExtension(typeof(PlantUMLLanguage), Constants.FileDefaultExtension)]
     [ProvideLanguageExtension(typeof(PlantUMLLanguage), Constants.FileExtension)]
 
     [ProvideEditorFactory(typeof(PlantUMLLanguage), 0, false, CommonPhysicalViewAttributes = (int)__VSPHYSICALVIEWATTRIBUTES.PVA_SupportsPreview, TrustLevel = __VSEDITORTRUSTLEVEL.ETL_AlwaysTrusted)]
     [ProvideEditorLogicalView(typeof(PlantUMLLanguage), VSConstants.LOGVIEWID.TextView_string, IsTrusted = true)]
+    [ProvideEditorExtension(typeof(PlantUMLLanguage), Constants.FileDefaultExtension, 1000)]
     [ProvideEditorExtension(typeof(PlantUMLLanguage), Constants.FileExtension, 1000)]
     public sealed class PlantUMLEditor_Package : ToolkitPackage
     {
